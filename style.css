@@ -339,3 +339,14 @@ body {
 .social-links a:hover {
   text-decoration: underline;
 }
+
+/*typewriting*/
+.highlight {
+    color: #007bff;
+    font-weight: bold;
+    border-right: 2px solid #007bff;
+    padding-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
