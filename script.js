@@ -9,12 +9,33 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 // ContactPage
 const contactForm = document.getElementById("contact-form");
 if (contactForm) {
-  contactForm.addEventListener("submit", function(e) {
+  contactForm.addEventListener("submit", async function(e) {
     e.preventDefault();
-    alert("Thanks for your message! I'll get back to you soon.");
-    this.reset();
+    
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const response = await fetch('http://localhost:5000/api/contact', {
+      method: 'POST',
+      headers: {'contact-type': 'application/json'},
+      body: JSON.stringify({name, email, message})
+    });
+
+    if(response.ok){
+      alert("Message sent and saved successfully");
+    }
+    else{
+      alert("Something went wrong. Try again.");
+    }
   });
 }
+
+
+
+
+
+
 
 // Typewriter effect
 document.addEventListener("DOMContentLoaded", () => {
